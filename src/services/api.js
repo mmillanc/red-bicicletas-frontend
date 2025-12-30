@@ -1,7 +1,11 @@
-export const getBicicletas = async () => {
-  const res = await fetch('http://localhost:3000/api/bicicletas');
-  return res.json();
-};
+import axios from 'axios'
+
+const api = axios.create({
+  baseURL: 'http://localhost:3000/api'
+})
+
+export const getBicicletas = () => api.get('/bicicletas')
+
 
 
 /*
