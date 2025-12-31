@@ -13,6 +13,16 @@ export default function MapView() {
       attribution: '&copy; OpenStreetMap'
     }).addTo(mapRef.current)
 
+    fetch('http://localhost:3000/api/bicicletas')
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(bici => {
+        L.marker([bici.lat, bici.lng], {
+          title: bici.modelo
+        }).addTo(mapRef.current)
+      })
+    })
+
     return () => {
       mapRef.current?.remove()
       mapRef.current = null
