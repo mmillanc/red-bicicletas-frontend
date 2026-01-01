@@ -5,6 +5,14 @@ const api = axios.create({
 })
 
 export const getBicicletas = () => api.get('/bicicletas')
+export const crearBicicleta = (data) =>
+  api.post('/bicicletas', data);
+
+export const eliminarBicicleta = (id) =>
+  api.delete(`/bicicletas/${id}`);
+
+export const actualizarBicicleta = (id, data) =>
+  api.put(`/bicicletas/${id}`, data);
 
 
 
